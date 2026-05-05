@@ -257,3 +257,7 @@ td.outputdata {
     font-family: 'Times New Roman', Times, serif;
     font-weight:  normal;
 }
+
+#mname {
+    width: 30px;
+}
