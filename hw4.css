@@ -258,6 +258,6 @@ td.outputdata {
     font-weight:  normal;
 }
 
-#mname {
+input#mname {
     width: 30px;
 }
