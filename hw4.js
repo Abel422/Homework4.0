@@ -561,3 +561,37 @@ fetch("footer.html")
     .catch(function(error) {
         console.log("Fetch error: " + error.message);
     });
+
+    // LOCAL STORAGE - save form fields on blur
+var localFields = [
+    "fname", "mname", "lname", "dob",
+    "address1", "address2", "city", "state", "zcode",
+    "email", "phonen", "username", "notes", "range"
+];
+
+localFields.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("blur", function() {
+        localStorage.setItem(id, el.value);
+    });
+});
+
+// reload local storage for returning user
+var returningUser = getCookie("firstName");
+if (returningUser !== "") {
+    localFields.forEach(function(id) {
+        var el = document.getElementById(id);
+        var saved = localStorage.getItem(id);
+        if (el && saved !== null) {
+            el.value = saved;
+        }
+    });
+}
+
+// clear local storage if remember me unchecked or "not me" clicked
+document.getElementById("remember-me").addEventListener("change", function() {
+    if (!this.checked) {
+        localStorage.clear();
+    }
+});
