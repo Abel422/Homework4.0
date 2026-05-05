@@ -492,7 +492,7 @@ inputs.forEach(function (input) {
 
     // putting a cookie when the input field changes
     inputElement.addEventListener("input", function () {
-        setCookie(input.cookieName, inputElement.value, 30);
+        setCookie(input.cookieName, inputElement.value, 2);
     });
 });
 
@@ -524,7 +524,7 @@ document.getElementById("remember-me").addEventListener("change", function () {
         inputs.forEach(function (input) {
             const inputElement = document.getElementById(input.id);
             if (inputElement.value.trim() !== "") {
-                setCookie(input.cookieName, inputElement.value, 30);
+                setCookie(input.cookieName, inputElement.value, 2);
             }
         });
         console.log("Cookies saved because 'Remember Me' is checked.");
@@ -548,3 +548,16 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteAllCookies();
     }
 });
+
+
+// Fetch API - loads footer content
+fetch("footer.html")
+    .then(function(response) {
+        if (!response.ok) {
+            throw new Error("Could not load footer.html");
+        }
+        return response.text();
+    })
+    .catch(function(error) {
+        console.log("Fetch error: " + error.message);
+    });
